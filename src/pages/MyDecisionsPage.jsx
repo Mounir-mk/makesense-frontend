@@ -19,7 +19,7 @@ function MyDecisionsPage() {
         </h1>
         <div className="flex flex-col md:flex-row gap-4 flex-wrap">
           {decisions
-            .filter((decision) => decision.id === auth().user.id)
+            .filter((decision) => decision.user_id === auth().user.id)
             .map((decision) => (
               <DashboardCard
                 key={decision.id}
