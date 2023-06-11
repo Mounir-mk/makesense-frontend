@@ -74,9 +74,9 @@ const useFetch = (
         setData(res.data);
         return res;
       } catch (err) {
-        setError(err.message);
+        setError(err);
         console.error(err);
-        return err.message;
+        return err;
       } finally {
         setLoading(false);
       }

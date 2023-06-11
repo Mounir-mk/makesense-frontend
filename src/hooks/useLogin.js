@@ -21,8 +21,10 @@ const useLogin = () => {
           authState: { user: res.data.authUserState },
         });
       }
+      return res;
     } catch (err) {
       console.error(err);
+      return err;
     }
   };
 

@@ -12,16 +12,14 @@ function Login() {
 
   const { login } = useLogin();
 
-  const handleLogin = (event) => {
+  const handleLogin = async (event) => {
     event.preventDefault();
     const email = emailRef.current.value;
     const password = passwordRef.current.value;
     const rememberMe = rememberMeRef.current.checked;
 
-    const res = login(email, password, rememberMe);
-    if (!res.status === 200) {
-      setErrorInput(true);
-    }
+    const res = await login(email, password, rememberMe);
+    if (res.response.status !== 200) setErrorInput(true);
   };
 
   return (
@@ -32,11 +30,7 @@ function Login() {
             id="login_image"
             className="h-full md:w-1/2 pb-4 md:pb-0 hidden md:flex md:justify-center md:items-center"
           >
-            <img
-              src={loginImage}
-              alt="Login"
-              className="h-max-full w-auto rounded-2xl"
-            />
+            <img src={loginImage} alt="Login" className="w-auto rounded-2xl" />
           </article>
           <article
             id="login"
